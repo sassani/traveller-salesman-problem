@@ -1,0 +1,3 @@
+Summary
+map_id:0
+minimum distance:23407.817591250263
