@@ -1,5 +1,7 @@
+.gitignore
 .vscode/
 results/
+Summary.txt
 __pycache__
 *.ipynb
 *.png

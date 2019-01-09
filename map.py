@@ -189,4 +189,5 @@ class Map:
             if(current_city.is_prime):
                 current_energy = 10
         f.write('0\n')
+        print('Distance: '+str(dist))
         return {'totalDist': dist, 'minEnergy': min_enrg}
