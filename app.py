@@ -1,17 +1,18 @@
 import math
+import sys
 
 from map import Map
 
-TRY_NUMBER = 5
+TRY_NUMBER = int(sys.argv[1])
 
 
 min_distanc = math.inf
 map_id = -1
 for i in range(TRY_NUMBER):
 
-    print('Itteration: '+str(i))
+    print('\nItteration: ',str(i+1),'/',str(TRY_NUMBER))
 
-    city_map = Map('cities.csv')
+    city_map = Map('cities.csv', int(sys.argv[2]))
 
     loop_num = len(city_map._loops)
     # city_map.print_loops()

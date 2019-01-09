@@ -14,9 +14,6 @@ from city import City
 from loop import Loop
 from unionfind import UnionFind
 
-DATA_LIMIT = 20
-
-
 class Map:
     # cities = {}
     # _loops = []
@@ -24,12 +21,12 @@ class Map:
     # loops = UnionFind()
     # _print: bool = False
 
-    def __init__(self, cities_data, print: bool = False):
+    def __init__(self, cities_data, data_limit: int = 0, print: bool = False):
         self.cities = {}
         self._loops = []
         self._borders = []
         self.loops = UnionFind()
-        limit = DATA_LIMIT
+        limit = data_limit
         self._print = print
         df = pd.read_csv(cities_data)
         upper = len(df)
@@ -63,6 +60,8 @@ class Map:
                 'f-'+str(self.cities[point[1]]), 't-'+str(self.cities[point[0]]))
 
         temp = bipartite.maximum_matching(g_cities)
+        print(temp)
+        del g_cities
         islands = nx.DiGraph()
         i = 0
         for key, value in temp.items():
@@ -74,7 +73,7 @@ class Map:
             if(i >= temp.__len__()/2):
                 break
         for i, c in enumerate(nx.recursive_simple_cycles(islands)):
-        # for i, c in enumerate(nx.simple_cycles(islands)):
+            # for i, c in enumerate(nx.simple_cycles(islands)):
             loop = Loop(c, i)
             self._loops.append(loop)
             self.loops.add(i)
